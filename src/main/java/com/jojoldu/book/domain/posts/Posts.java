@@ -34,3 +34,4 @@ public class Posts {
         this.author=author;
     }
 }
+/////////////100p까지의 코드임.

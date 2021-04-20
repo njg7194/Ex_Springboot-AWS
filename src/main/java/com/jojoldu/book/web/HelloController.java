@@ -18,6 +18,5 @@ public class HelloController {
         return new HelloResponseDto(name, amount);
     }
 
-
 }
 
