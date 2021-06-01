@@ -11,11 +11,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.jojoldu.book.domain.posts.Posts;
-import com.jojoldu.book.domain.posts.PostsRepository;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PostsRepositoryTest {
@@ -24,17 +19,21 @@ public class PostsRepositoryTest {
     PostsRepository postsRepository;
 
     @After
-    public void cleanup(){
+    public void cleanup() {
         postsRepository.deleteAll();
     }
 
     @Test
-    public void 게시글저장_불러오기(){
+    public void 게시글저장_불러오기() {
         //given
         String title = "테스트 게시글";
         String content = "테스트 본문";
 
-        postsRepository.save(Posts.builder().title(title).content(content).author("jojo").build());
+        postsRepository.save(Posts.builder()
+        .title(title)
+        .content(content)
+        .author("njg7194@naver.com")
+        .build());
 
         //when
         List<Posts> postsList = postsRepository.findAll();
