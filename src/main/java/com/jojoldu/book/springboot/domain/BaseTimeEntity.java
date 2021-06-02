@@ -21,3 +21,4 @@ public abstract class BaseTimeEntity {
     @LastModifiedDate
     private LocalDateTime modifiedDate;
 }
+// TODO : JPA Auditing p.121
