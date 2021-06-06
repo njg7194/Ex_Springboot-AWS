@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /*var main = {
+=======
+var main = {
+>>>>>>> origin/AllReset
     init : function(){
         console.log("hello");
         var _this = this;
@@ -29,6 +33,7 @@
     }
 };
 
+<<<<<<< HEAD
 main.init(); */
 var main = {
     init : function () {
@@ -62,4 +67,6 @@ var main = {
 
 };
 
+=======
+>>>>>>> origin/AllReset
 main.init();
