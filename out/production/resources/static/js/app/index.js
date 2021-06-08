@@ -1,4 +1,5 @@
 var main = {
+
     init : function(){
         console.log("hello");
         var _this = this;
