@@ -6,9 +6,9 @@ var main = {
             _this.save();
         });
 
-        $('#btn-update').on('click'), function () {
+        $('#btn-update').on('click', function () {
             _this.update();
-        }
+        });
     },
     save : function () {
         var data = {
@@ -20,6 +20,7 @@ var main = {
         $.ajax({
             type: 'POST',
             url: '/api/v1/posts',
+            dataType : 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
@@ -50,7 +51,6 @@ var main = {
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-        
     }
 };
 
