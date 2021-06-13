@@ -1,6 +1,5 @@
 package com.jojoldu.book.springboot.web;
 
-
 import com.jojoldu.book.springboot.service.PostsService;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
 import com.jojoldu.book.springboot.web.dto.PostsSaveRequestDto;
@@ -19,15 +18,13 @@ public class PostsApiController {
         return  postsService.save(requestDto);
     }
 
-    //////////////////////////////////////////////////////////////// p.111
-
     @PutMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
 
     @GetMapping("/api/v1/posts/{id}")
-    public PostsResponseDto findById (@PathVariable Long id) {
+    public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
     }
 

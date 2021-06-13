@@ -37,7 +37,7 @@ public class PostsService {
         return new PostsResponseDto(entity);
     }
 
-    @Transactional//(readOnly = ture) 에러나서 뺌
+    @Transactional//(readOnly = ture)
     public List<PostsListResponseDto> findAllDesc() {
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new)
