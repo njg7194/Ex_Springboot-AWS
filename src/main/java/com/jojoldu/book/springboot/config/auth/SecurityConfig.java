@@ -17,12 +17,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .headers().frameOptions().disable().and().authorizeRequests()
-                .antMatchers("/", "/css/**", "/images/**","/js/**", "H2-console/**")
+        http
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
+                .authorizeRequests().antMatchers("/", "/css/**", "/images/**","/js/**", "H2-console/**")
                 .permitAll().antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                .anyRequest().authenticated().and()
-                .logout().logoutSuccessUrl("/").and()
+                .anyRequest().authenticated()
+                .and()
+                .logout().logoutSuccessUrl("/")
+                .and()
                 .oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
     }
 }
