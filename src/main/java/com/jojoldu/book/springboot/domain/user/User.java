@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import com.jojoldu.book.springboot.domain.BaseTimeEntity;
-import org.h2.engine.Role;
 
-//import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -54,6 +52,6 @@ public class User extends BaseTimeEntity {
     }
 
     public String getRoleKey() {
-        return this.getRoleKey();
+        return this.role.getKey();
     }
 }
