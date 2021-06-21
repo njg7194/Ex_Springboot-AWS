@@ -1,16 +1,19 @@
-<<<<<<< HEAD
-/*var main = {
-=======
 var main = {
->>>>>>> origin/AllReset
-    init : function(){
-        console.log("hello");
+
+    init : function() {
         var _this = this;
         $('#btn-save').on('click', function () {
-            console.log("Clicked");
             _this.save();
-            
         });
+
+        $('#btn-update').on('click', function () {
+            _this.update();
+        });
+
+        $('#btn-delete').on('click', function() {
+            _this.delete();
+        });
+        
     },
     save : function () {
         var data = {
@@ -22,6 +25,7 @@ var main = {
         $.ajax({
             type: 'POST',
             url: '/api/v1/posts',
+            dataType : 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
@@ -30,43 +34,45 @@ var main = {
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-    }
-};
-
-<<<<<<< HEAD
-main.init(); */
-var main = {
-    init : function () {
-        console.log("hello");
-        var _this = this;
-        $('#btn-save').on('click', function () {
-            console.log("Clicked");
-            _this.save();
-        });
     },
-    save : function () {
+
+    update : function () {
         var data = {
             title: $('#title').val(),
-            author: $('#author').val(),
             content: $('#content').val()
         };
 
+        var id = $('#id').val();
+
         $.ajax({
-            type: 'POST',
-            url: '/posts',
+            type: 'PUT',
+            url: '/api/v1/posts/'+id,
             dataType: 'json',
-            contentType:'application/json; charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function() {
-            alert('글이 등록되었습니다.');
-            location.reload();
+        }).done(function () {
+            alert('글이 수정되었습니다.');
+            window.location.href = '/';
         }).fail(function (error) {
-            alert(error);
+            alert(JSON.stringify(error));
+        });
+    },
+
+    delete : function () {
+        var id = $('#id').val();
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/v1/posts/'+id,
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8'
+        }).done(function() {
+            alert('글이 삭제되었습니다.');
+            window.location.href = '/';
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
         });
     }
-
 };
 
-=======
->>>>>>> origin/AllReset
 main.init();
