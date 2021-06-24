@@ -19,7 +19,7 @@ import com.jojoldu.book.springboot.domain.user.UserRepository;
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import javax.swing.text.DefaultStyledDocument;
-
+//TODO : 네아로 완료했는데 변경할거 없어서 쓰는 투두
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
