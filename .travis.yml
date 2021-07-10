@@ -11,12 +11,12 @@ cache:
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
+    -
 script: "./gradlew clean build"
 
 before_install:
   - chmod +x gradlew
 
-# CI 실행 완료 시 메일로 알람 .
 
 before_deploy:
   - zip -r Ex_Springboot-AWS *
@@ -34,6 +34,22 @@ deploy:
     local_dir: deploy #before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+
+    bucket: ex-springboot-build #S3버킷
+    key: Ex_Springboot-AWS.zip # 빌드 파일을 압축해서 전달
+
+    bundle_type: zip # 압축 확장자
+    application: Ex_Springboot-AWS
+
+    deployment_group: Ex_Springboot-AWS-group
+
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+# CI 실행 완료 시 메일로 알람 .
 notifications:
   email:
     recipients:
