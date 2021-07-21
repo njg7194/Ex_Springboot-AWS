@@ -26,6 +26,7 @@ echo "> $JAR_NAME 실행"
 IDLE_PROFILE=$(find_idle_profile)
 
 echo "> $JAR_NAME 를 profile=$IDLE_PROFILE 로 실행합니다."
+#대기중 프로파일 프로퍼티, oauth프로퍼티, real-db프로퍼티
 nohup java -jar \
   -Dspring.config.location=classpath:/applicaton.properties,classpath:/application-$IDLE_PROFILE.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
   -Dspring.profiles.active=$IDLE_PROFILE \
