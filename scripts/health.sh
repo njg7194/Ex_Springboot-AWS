@@ -17,7 +17,7 @@ do
   RESPONSE=$(curl -s http://localhost:${IDLE_PORT}/profile)
   UP_COUNT=$(echo ${RESPONSE} | grep 'real' | wc -l)
 
-  echo "> 리스폰  변수확인${RESPONSE}"
+  echo "> 리스폰 변수확인${RESPONSE}"
   echo "> 업카운트 변수확인${UP_COUNT}"
 
   if [ ${UP_COUNT} -ge 1 ]
